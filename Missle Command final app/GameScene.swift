@@ -26,7 +26,7 @@ class GameScene: SKScene {
         
         run(SKAction.repeatForever(
             SKAction.sequence([
-                SKAction.run(addBalloon),
+                SKAction.run(addMissile),
                 SKAction.wait(forDuration: 1.0)
                 
                 
@@ -40,10 +40,19 @@ class GameScene: SKScene {
         
       
         }
+    
+    
+    func random() -> CGFloat {
+        return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+    }
+    
+    func random(min: CGFloat, max: CGFloat) -> CGFloat {
+        return random() * (max - min) + min
+    }
         
     
     
-    func addBalloon() {
+    func addMissile() {
         
         // Create sprite
         let monster = SKSpriteNode(imageNamed: "")
