@@ -15,6 +15,7 @@
 		E946289222679B9C0005ED6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E946289022679B9C0005ED6C /* Main.storyboard */; };
 		E946289422679B9E0005ED6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E946289322679B9E0005ED6C /* Assets.xcassets */; };
 		E946289722679B9E0005ED6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E946289522679B9E0005ED6C /* LaunchScreen.storyboard */; };
+		E9A3C56A227A13D200125802 /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A3C569227A13D200125802 /* VectorMath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		E946289322679B9E0005ED6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E946289622679B9E0005ED6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E946289822679B9E0005ED6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9A3C569227A13D200125802 /* VectorMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VectorMath.swift; path = "../../../Downloads/NinjaAssets-2/VectorMath.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				E946289322679B9E0005ED6C /* Assets.xcassets */,
 				E946289522679B9E0005ED6C /* LaunchScreen.storyboard */,
 				E946289822679B9E0005ED6C /* Info.plist */,
+				E9A3C569227A13D200125802 /* VectorMath.swift */,
 			);
 			path = "Missle Command final app";
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9A3C56A227A13D200125802 /* VectorMath.swift in Sources */,
 				E946288D22679B9C0005ED6C /* GameScene.swift in Sources */,
 				E946288F22679B9C0005ED6C /* GameViewController.swift in Sources */,
 				E946288722679B9C0005ED6C /* AppDelegate.swift in Sources */,
