@@ -10,10 +10,10 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-
-    
-    
-    
+let city = SKSpriteNode(imageNamed: "city")
+//city.name = "city"
+let missile = SKSpriteNode(imageNamed: "missile 1")
+//missile.name = "missile 1"
     
     
     
@@ -55,8 +55,8 @@ class GameScene: SKScene {
     func addMissile() {
         
         // Create sprite
-        let monster = SKSpriteNode(imageNamed: "")
-        monster.name = ""
+        let monster = SKSpriteNode(imageNamed: "missile 2")
+        monster.name = "missile 2"
         
         // Determine where to spawn the monster along the Y axis
         let actualY = random(min: monster.size.height/3, max: size.height - monster.size.height/3)
