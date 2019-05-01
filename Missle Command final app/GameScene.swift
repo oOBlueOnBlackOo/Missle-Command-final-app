@@ -25,7 +25,8 @@ let turret = SKSpriteNode(imageNamed: "Turret")
     turret.name = "Turret"
 turret.position = CGPoint(x: 0, y: -320)
 turret.physicsBody?.affectedByGravity = false
-        turret.scale(to: CGSize(width: 100, height: 100))
+        turret.size.width = 100
+        turret.size.height = 100
         run(SKAction.repeatForever(
             SKAction.sequence([
                 SKAction.run(addMissile),
