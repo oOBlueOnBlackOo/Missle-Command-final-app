@@ -24,7 +24,15 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
     
         
-        
+        run(SKAction.repeatForever(
+            SKAction.sequence([
+                SKAction.run(addBalloon),
+                SKAction.wait(forDuration: 1.0)
+                
+                
+                
+                ])
+        ))
         
         
         
