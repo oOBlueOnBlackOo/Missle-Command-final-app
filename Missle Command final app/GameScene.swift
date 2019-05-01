@@ -14,7 +14,7 @@ let city = SKSpriteNode(imageNamed: "city")
 //city.name = "city"
 let missile = SKSpriteNode(imageNamed: "missile 1")
 //missile.name = "missile 1"
-    
+let turret = SKSpriteNode(imageNamed: "Turret")
     
     
     
@@ -22,8 +22,10 @@ let missile = SKSpriteNode(imageNamed: "missile 1")
     
     
     override func didMove(to view: SKView) {
-    
-        
+    turret.name = "Turret"
+turret.position = CGPoint(x: 0, y: -320)
+turret.physicsBody?.affectedByGravity = false
+        turret.scale(to: CGSize(width: 100, height: 100))
         run(SKAction.repeatForever(
             SKAction.sequence([
                 SKAction.run(addMissile),
