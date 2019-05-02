@@ -27,10 +27,11 @@ let turret = SKSpriteNode(imageNamed: "Turret")
     
     func turretSpawn(){
         turret.name = "Turret"
-        turret.position = CGPoint(x: 0, y: -320)
+        turret.position = CGPoint(x: 0, y: -620)
         turret.physicsBody?.affectedByGravity = false
         turret.size.width = 100
         turret.size.height = 100
+        addChild(turret)
     }
     
     
