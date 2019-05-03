@@ -36,7 +36,9 @@ let turret = SKSpriteNode(imageNamed: "Turret")
     
     
     override func didMove(to view: SKView) {
+        print("hi")
        turretSpawn()
+        print("didMove")
    
         run(SKAction.repeatForever(
             SKAction.sequence([
@@ -67,22 +69,46 @@ let turret = SKSpriteNode(imageNamed: "Turret")
     
     
     func createEnemy() {
-        var enemy = SKSpriteNode(imageNamed: "missile 2")
-        enemy.scale(to: CGSize(width: 100, height: 100))
-        enemy.physicsBody = SKPhysicsBody(rectangleOf: enemy.size)
-        enemy.position = CGPoint(x: self.size.width, y: 300)
-        enemy.physicsBody?.categoryBitMask = PhysicsCategory.enemy
-     //   enemy.physicsBody?.contactTestBitMask = PhysicsCategory.projectile
-        //enemy.physicsBody?.collisionBitMask = PhysicsCategory.none
-        addChild(enemy)
-        let actionMove = SKAction.move(to: CGPoint(x: 0, y: 300), duration: TimeInterval(CGFloat.random(in: 2.0...4.0)))
+      
+        // Create sprite
+        let bomb = SKSpriteNode(imageNamed: "missile 2")
+        bomb.name = "missile 2"
+        
+        // Determine where to spawn the monster along the Y axis
+        let actualX = random(min: bomb.size.width/2, max: size.width - bomb.size.width/2)
+        
+        // Position the monster slightly off-screen along the right edge,
+        // and along a random position along the Y axis as calculated above
+        bomb.position = CGPoint(x: actualX, y: size.width + bomb.size.width/3)
+        
+        // Add the monster to the scene
+        addChild(bomb)
+      //  monster.physicsBody = SKPhysicsBody(rectangleOf: monster.size)
+      //  monster.physicsBody?.isDynamic = true
+      //  monster.physicsBody?.categoryBitMask = 2
+      //  monster.physicsBody?.contactTestBitMask = PhysicsCatagory.projectile
+      //  monster.physicsBody?.collisionBitMask = PhysicsCatagory.none
+        
+        bomb.size.width = 75
+        bomb.size.height = 75
+        // Determine speed of the monster
+        let actualDuration = random(min: CGFloat(2.0), max: CGFloat(3.0))
+        
+        // Create the actions
+        let actionMove = SKAction.move(to: CGPoint(x: actualX, y: -bomb.size.width/2),
+                                       duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
-        enemy.run(SKAction.sequence([actionMove,actionMoveDone]))
+        bomb.run(SKAction.sequence([actionMove, actionMoveDone]))
+        
+    
+    
+    
+    
     }
-    func randomPoint() -> CGPoint{
-        var xPos = Int.random(in: 0...Int(self.size.width))
-        var yPos = Int.random(in: 0...Int(self.size.height))
-        return CGPoint(x: xPos, y: yPos)
-    }
+   // func randomPoint() -> CGPoint{
+   //     var xPos = Int.random(in: 0...Int(self.size.width))
+   //     var yPos = Int.random(in: 0...Int(self.size.height))
+   //     return CGPoint(x: xPos, y: yPos)
+   // }
     
 }
