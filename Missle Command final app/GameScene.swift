@@ -25,6 +25,12 @@ let missile = SKSpriteNode(imageNamed: "missile 1")
 let turret = SKSpriteNode(imageNamed: "Turret")
     
     
+  /*  func rotatePlayer(){
+        
+       let angle = atan2(location!.y - turret!.position.y , location!.x - turret!.position.x)
+        turret?.zRotation = angle - CGFloat(M_PI_2)
+    }*/
+    
     func turretSpawn(){
         turret.name = "Turret"
         turret.position = CGPoint(x: 0, y: -620)
@@ -32,13 +38,14 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         turret.size.width = 100
         turret.size.height = 100
         addChild(turret)
+       
     }
     
     
     
     override func didMove(to view: SKView) {
        turretSpawn()
-   
+    // rotatePlayer()
         run(SKAction.repeatForever(
             SKAction.sequence([
                 SKAction.run(createEnemy),
