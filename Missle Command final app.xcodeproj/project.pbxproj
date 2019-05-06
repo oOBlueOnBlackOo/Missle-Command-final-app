@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2437D7362280AC27002FAC7C /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2437D7352280AC27002FAC7C /* VectorMath.swift */; };
 		E946288722679B9C0005ED6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946288622679B9C0005ED6C /* AppDelegate.swift */; };
 		E946288D22679B9C0005ED6C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946288C22679B9C0005ED6C /* GameScene.swift */; };
 		E946288F22679B9C0005ED6C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946288E22679B9C0005ED6C /* GameViewController.swift */; };
 		E946289222679B9C0005ED6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E946289022679B9C0005ED6C /* Main.storyboard */; };
 		E946289422679B9E0005ED6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E946289322679B9E0005ED6C /* Assets.xcassets */; };
 		E946289722679B9E0005ED6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E946289522679B9E0005ED6C /* LaunchScreen.storyboard */; };
-		E9A3C56A227A13D200125802 /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A3C569227A13D200125802 /* VectorMath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2437D7352280AC27002FAC7C /* VectorMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorMath.swift; sourceTree = "<group>"; };
 		E946288322679B9C0005ED6C /* Missle Command final app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Missle Command final app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E946288622679B9C0005ED6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E946288C22679B9C0005ED6C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -25,7 +26,6 @@
 		E946289322679B9E0005ED6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E946289622679B9E0005ED6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E946289822679B9E0005ED6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E9A3C569227A13D200125802 /* VectorMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VectorMath.swift; path = "../../../Downloads/NinjaAssets-2/VectorMath.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,8 +64,8 @@
 				E946289022679B9C0005ED6C /* Main.storyboard */,
 				E946289322679B9E0005ED6C /* Assets.xcassets */,
 				E946289522679B9E0005ED6C /* LaunchScreen.storyboard */,
+				2437D7352280AC27002FAC7C /* VectorMath.swift */,
 				E946289822679B9E0005ED6C /* Info.plist */,
-				E9A3C569227A13D200125802 /* VectorMath.swift */,
 			);
 			path = "Missle Command final app";
 			sourceTree = "<group>";
@@ -141,7 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9A3C56A227A13D200125802 /* VectorMath.swift in Sources */,
+				2437D7362280AC27002FAC7C /* VectorMath.swift in Sources */,
 				E946288D22679B9C0005ED6C /* GameScene.swift in Sources */,
 				E946288F22679B9C0005ED6C /* GameViewController.swift in Sources */,
 				E946288722679B9C0005ED6C /* AppDelegate.swift in Sources */,
