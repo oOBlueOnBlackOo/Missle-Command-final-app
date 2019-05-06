@@ -29,21 +29,27 @@ let turret = SKSpriteNode(imageNamed: "Turret")
     
     func turretSpawn(){
         turret.name = "Turret"
-        turret.position = CGPoint(x: 0, y: -620)
+        turret.position = CGPoint(x: 175, y: 0)
         turret.physicsBody?.affectedByGravity = false
-        turret.size.width = 100
-        turret.size.height = 100
+        turret.size.width = 75
+        turret.size.height = 75
         addChild(turret)
-       
     }
-    
+    func citySpawn(){
+        city.name = "city"
+        city.position = CGPoint(x: 85, y: 23)
+        city.physicsBody?.affectedByGravity = false
+        city.size.width = 100
+        city.size.height = 75
+        addChild(city)
+    }
     
     
     override func didMove(to view: SKView) {
         print("hi")
        turretSpawn()
         print("didMove")
-   
+       citySpawn()
         run(SKAction.repeatForever(
             SKAction.sequence([
                 SKAction.run(createEnemy),
