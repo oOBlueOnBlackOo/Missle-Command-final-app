@@ -89,7 +89,7 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         
         // Position the monster slightly off-screen along the right edge,
         // and along a random position along the Y axis as calculated above
-        bomb.position = CGPoint(x: actualX, y: size.width + bomb.size.width/3)
+        bomb.position = CGPoint(x: actualX, y: size.width + bomb.size.width)
         
         // Add the monster to the scene
         addChild(bomb)
