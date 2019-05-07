@@ -11,7 +11,7 @@ import GameplayKit
 struct PhysicsCategory {
  //   static let none: UInt32 = 0
   //  static let all: UInt32 = UInt32.max
-    static let enemy: UInt32 = 2 //#1
+    static let bomb: UInt32 = 2 //#1
  //   static let projectile: UInt32 = 4
     //static let player: UInt32 = 1
     
@@ -92,7 +92,7 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         bomb.name = "missile 2"
         
         // Determine where to spawn the monster along the Y axis
-        let actualX = random(min: bomb.size.width/2, max: size.width - bomb.size.width/2)
+        let actualX = random(min: bomb.size.width/5, max: size.width - bomb.size.width/5)
         
         // Position the monster slightly off-screen along the right edge,
         // and along a random position along the Y axis as calculated above
@@ -106,10 +106,10 @@ let turret = SKSpriteNode(imageNamed: "Turret")
       //  monster.physicsBody?.contactTestBitMask = PhysicsCatagory.projectile
       //  monster.physicsBody?.collisionBitMask = PhysicsCatagory.none
         
-        bomb.size.width = 75
-        bomb.size.height = 75
+        bomb.size.width = 50
+        bomb.size.height = 50
         // Determine speed of the monster
-        let actualDuration = random(min: CGFloat(2.0), max: CGFloat(3.0))
+        let actualDuration = random(min: CGFloat(3.0), max: CGFloat(4.0))
         
         // Create the actions
         let actionMove = SKAction.move(to: CGPoint(x: actualX, y: -bomb.size.width/2),
