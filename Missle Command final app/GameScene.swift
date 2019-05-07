@@ -100,11 +100,12 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         
         // Add the monster to the scene
         addChild(bomb)
-      //  monster.physicsBody = SKPhysicsBody(rectangleOf: monster.size)
-      //  monster.physicsBody?.isDynamic = true
-      //  monster.physicsBody?.categoryBitMask = 2
-      //  monster.physicsBody?.contactTestBitMask = PhysicsCatagory.projectile
-      //  monster.physicsBody?.collisionBitMask = PhysicsCatagory.none
+      /*  monster.physicsBody = SKPhysicsBody(rectangleOf: monster.size)
+          monster.physicsBody?.isDynamic = true
+          monster.physicsBody?.categoryBitMask = 2
+          monster.physicsBody?.contactTestBitMask = PhysicsCatagory.projectile
+          monster.physicsBody?.collisionBitMask = PhysicsCatagory.none
+      */
         
         bomb.size.width = 50
         bomb.size.height = 50
@@ -112,10 +113,10 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         let actualDuration = random(min: CGFloat(3.0), max: CGFloat(4.0))
         
         // Create the actions
-        let actionMove = SKAction.move(to: CGPoint(x: actualX, y: -bomb.size.width/2),
-                                       duration: TimeInterval(actualDuration))
-        let actionMoveDone = SKAction.removeFromParent()
-        bomb.run(SKAction.sequence([actionMove, actionMoveDone]))
+    let actionMove = SKAction.move(to: CGPoint(x: actualX, y: -bomb.size.width/2),
+            duration: TimeInterval(actualDuration))
+    let actionMoveDone = SKAction.removeFromParent()
+            bomb.run(SKAction.sequence([actionMove, actionMoveDone]))
         
     
     
