@@ -18,7 +18,7 @@ struct PhysicsCategory {
 }
 
 class GameScene: SKScene,SKPhysicsContactDelegate {
-    
+let missile1 = SKSpriteNode(imageNamed: "missile1")
 let city = SKSpriteNode(imageNamed: "city")
 let city2 = SKSpriteNode(imageNamed: "city2")
 let missile = SKSpriteNode(imageNamed: "missile 1")
