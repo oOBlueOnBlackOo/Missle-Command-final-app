@@ -43,21 +43,13 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         city.size.height = 75
         addChild(city)
     }
-    func citySpawn1(){
-        city.name = "city"
-        city.position = CGPoint(x: 385, y: 23)
-        city.physicsBody?.affectedByGravity = false
-        city.size.width = 100
-        city.size.height = 75
-        addChild(city)
-    }
     
     override func didMove(to view: SKView) {
         print("hi")
        turretSpawn()
         print("didMove")
        citySpawn()
-       citySpawn1()
+      
         run(SKAction.repeatForever(
             SKAction.sequence([
                 SKAction.run(createEnemy),
@@ -93,7 +85,7 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         bomb.name = "missile 2"
         
         // Determine where to spawn the monster along the Y axis
-        let actualX = random(min: bomb.size.width/2, max: size.width - bomb.size.width/2)
+        let actualX = random(min: bomb.size.width/5, max: size.width - bomb.size.width/5)
         
         // Position the monster slightly off-screen along the right edge,
         // and along a random position along the Y axis as calculated above
