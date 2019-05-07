@@ -19,15 +19,12 @@ struct PhysicsCategory {
 
 class GameScene: SKScene {
 let city = SKSpriteNode(imageNamed: "city")
-//city.name = "city"
+let city2 = SKSpriteNode(imageNamed: "city2")
 let missile = SKSpriteNode(imageNamed: "missile 1")
-//missile.name = "missile 1"
 let turret = SKSpriteNode(imageNamed: "Turret")
     
-    
- 
-    
     func turretSpawn(){
+        
         turret.name = "Turret"
         turret.position = CGPoint(x: 175, y: 0)
         turret.physicsBody?.affectedByGravity = false
@@ -36,6 +33,7 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         addChild(turret)
     }
     func citySpawn(){
+        
         city.name = "city"
         city.position = CGPoint(x: 85, y: 23)
         city.physicsBody?.affectedByGravity = false
@@ -43,16 +41,25 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         city.size.height = 75
         addChild(city)
     }
-
+    func city2Spawn()  {
+        
+        city2.name = "city2"
+        city2.position = CGPoint(x: 305, y: 23)
+        city2.physicsBody?.affectedByGravity = false
+        city2.size.width = 100
+        city2.size.height = 75
+        addChild(city2)
+    }
+    override func didMove(to view: SKView){
     
     override func didMove(to view: SKView) {
         
        
         print("hi")
        turretSpawn()
-        print("didMove")
        citySpawn()
-      
+       city2Spawn()
+    
         run(SKAction.repeatForever(
             SKAction.sequence([
                 SKAction.run(createEnemy),
@@ -110,10 +117,10 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         let actualDuration = random(min: CGFloat(3.0), max: CGFloat(4.0))
         
         // Create the actions
-        let actionMove = SKAction.move(to: CGPoint(x: actualX, y: -bomb.size.width/2),
-                                       duration: TimeInterval(actualDuration))
-        let actionMoveDone = SKAction.removeFromParent()
-        bomb.run(SKAction.sequence([actionMove, actionMoveDone]))
+    let actionMove = SKAction.move(to: CGPoint(x: actualX, y: -bomb.size.width/2),
+            duration: TimeInterval(actualDuration))
+    let actionMoveDone = SKAction.removeFromParent()
+            bomb.run(SKAction.sequence([actionMove, actionMoveDone]))
         
         
     
