@@ -9,15 +9,15 @@
 import SpriteKit
 import GameplayKit
 struct PhysicsCategory {
- //   static let none: UInt32 = 0
+    static let none: UInt32 = 0
   //  static let all: UInt32 = UInt32.max
     static let bomb: UInt32 = 2 //#1
- //   static let projectile: UInt32 = 4
-    //static let player: UInt32 = 1
+    static let projectile: UInt32 = 4
+    static let turret: UInt32 = 1
     
 }
 
-class GameScene: SKScene,SKPhysicsContactDelegate {
+class GameScene: SKScene {
 let city = SKSpriteNode(imageNamed: "city")
 //city.name = "city"
 let missile = SKSpriteNode(imageNamed: "missile 1")
@@ -46,6 +46,8 @@ let turret = SKSpriteNode(imageNamed: "Turret")
 
     
     override func didMove(to view: SKView) {
+        
+       
         print("hi")
        turretSpawn()
         print("didMove")
@@ -65,6 +67,8 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         
         
         
+        physicsWorld.gravity = CGVector.zero
+        physicsWorld.contactDelegate = self
       
         }
     
@@ -94,11 +98,11 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         
         // Add the monster to the scene
         addChild(bomb)
-      //  monster.physicsBody = SKPhysicsBody(rectangleOf: monster.size)
-      //  monster.physicsBody?.isDynamic = true
-      //  monster.physicsBody?.categoryBitMask = 2
-      //  monster.physicsBody?.contactTestBitMask = PhysicsCatagory.projectile
-      //  monster.physicsBody?.collisionBitMask = PhysicsCatagory.none
+        bomb.physicsBody = SKPhysicsBody(rectangleOf: bomb.size)
+        bomb.physicsBody?.isDynamic = true
+        bomb.physicsBody?.categoryBitMask = 2
+        bomb.physicsBody?.contactTestBitMask = PhysicsCategory.projectile
+        bomb.physicsBody?.collisionBitMask = PhysicsCategory.none
         
         bomb.size.width = 50
         bomb.size.height = 50
@@ -111,6 +115,9 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         let actionMoveDone = SKAction.removeFromParent()
         bomb.run(SKAction.sequence([actionMove, actionMoveDone]))
         
+        
+    
+        
     
     
     
@@ -122,4 +129,90 @@ let turret = SKSpriteNode(imageNamed: "Turret")
    //     return CGPoint(x: xPos, y: yPos)
    // }
     
+
+
+override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    // 1 - Choose one of the touches to work with, gets the location of the last touch
+    guard let touch = touches.first else {
+        return
+    }
+    let touchLocation = touch.location(in: self)
+    
+    // 2 - Set up initial location of projectile
+    let projectile = SKSpriteNode(imageNamed: "missile 1")
+    projectile.position = turret.position
+    
+    // 3 - Determine offset of location to projectile
+    let offset = touchLocation - projectile.position
+    
+    
+    
+    // 5 - OK to add now - you've double checked position
+    addChild(projectile)
+    
+    // 6 - Get the direction of where to shoot
+    let direction = offset.normalized()
+    
+    // 7 - Make it shoot far enough to be guaranteed off screen
+    let shootAmount = direction * 1000
+    
+    // 8 - Add the shoot amount to the current position
+    let realDest = shootAmount + projectile.position
+    
+    // 9 - Create the actions
+    let actionMove = SKAction.move(to: realDest, duration: 2.0)
+    let actionMoveDone = SKAction.removeFromParent()
+    projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
+    
+    
+    projectile.size.height = 25
+    projectile.size.width = 25
+    
+    projectile.physicsBody = SKPhysicsBody(circleOfRadius: projectile.size.width/2)
+    projectile.physicsBody?.isDynamic = true
+    projectile.physicsBody?.categoryBitMask = 2
+    projectile.physicsBody?.contactTestBitMask = PhysicsCategory.bomb
+    projectile.physicsBody?.collisionBitMask = PhysicsCategory.none
+    projectile.physicsBody?.usesPreciseCollisionDetection = true
+    
+    
+}
+    
+    func projectileDidCollideWithMonster(projectile: SKSpriteNode, bomb: SKSpriteNode) {
+        print("hit")
+        projectile.removeFromParent()
+        bomb.removeFromParent()
+        
+        
+    }
+
+    
+    
+    
+    
+}
+
+extension GameScene: SKPhysicsContactDelegate {
+    
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        // 1
+        var firstBody: SKPhysicsBody
+        var secondBody: SKPhysicsBody
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        // 2
+        //if ((firstBody.categoryBitMask & PhysicsCatagory.monster != 0) &&
+        //      (secondBody.categoryBitMask & PhysicsCatagory.projectile != 0)) {
+        if let bomb = firstBody.node as? SKSpriteNode,
+            let projectile = secondBody.node as? SKSpriteNode {
+            projectileDidCollideWithMonster(projectile: projectile, bomb: bomb)
+        }
+    }
 }
