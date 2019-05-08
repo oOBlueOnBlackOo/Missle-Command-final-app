@@ -22,6 +22,16 @@ let city = SKSpriteNode(imageNamed: "city")
 let city2 = SKSpriteNode(imageNamed: "city2")
 let missile = SKSpriteNode(imageNamed: "missile 1")
 let turret = SKSpriteNode(imageNamed: "Turret")
+   
+    var scoreLabel: SKLabelNode!
+    var score: Int = 0
+    
+    func scoreLabelCreate(){
+        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        scoreLabel.text = "0"
+        scoreLabel.position = CGPoint(x: 185, y: 620)
+        addChild(scoreLabel)
+    }
     
     func turretSpawn(){
         
@@ -50,15 +60,14 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         city2.size.height = 75
         addChild(city2)
     }
-    override func didMove(to view: SKView){
+   
     
     override func didMove(to view: SKView) {
-        
        
-        print("hi")
        turretSpawn()
        citySpawn()
        city2Spawn()
+       scoreLabelCreate()
     
         run(SKAction.repeatForever(
             SKAction.sequence([
