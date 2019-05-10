@@ -12,8 +12,8 @@
 		E946288D22679B9C0005ED6C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946288C22679B9C0005ED6C /* GameScene.swift */; };
 		E946288F22679B9C0005ED6C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946288E22679B9C0005ED6C /* GameViewController.swift */; };
 		E946289222679B9C0005ED6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E946289022679B9C0005ED6C /* Main.storyboard */; };
-		E946289422679B9E0005ED6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E946289322679B9E0005ED6C /* Assets.xcassets */; };
 		E946289722679B9E0005ED6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E946289522679B9E0005ED6C /* LaunchScreen.storyboard */; };
+		E9ADFDF722834B530092EDCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9ADFDF622834B530092EDCA /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,9 +23,9 @@
 		E946288C22679B9C0005ED6C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		E946288E22679B9C0005ED6C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		E946289122679B9C0005ED6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E946289322679B9E0005ED6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E946289622679B9E0005ED6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E946289822679B9E0005ED6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9ADFDF622834B530092EDCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +62,8 @@
 				E946288C22679B9C0005ED6C /* GameScene.swift */,
 				E946288E22679B9C0005ED6C /* GameViewController.swift */,
 				E946289022679B9C0005ED6C /* Main.storyboard */,
-				E946289322679B9E0005ED6C /* Assets.xcassets */,
 				E946289522679B9E0005ED6C /* LaunchScreen.storyboard */,
+				E9ADFDF622834B530092EDCA /* Assets.xcassets */,
 				2437D7352280AC27002FAC7C /* VectorMath.swift */,
 				E946289822679B9E0005ED6C /* Info.plist */,
 			);
@@ -129,7 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E946289222679B9C0005ED6C /* Main.storyboard in Resources */,
-				E946289422679B9E0005ED6C /* Assets.xcassets in Resources */,
+				E9ADFDF722834B530092EDCA /* Assets.xcassets in Resources */,
 				E946289722679B9E0005ED6C /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,13 +291,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G5558S8WTY;
+				DEVELOPMENT_TEAM = SKHK43WKLD;
 				INFOPLIST_FILE = "Missle Command final app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "CLC.Missle-Command-final-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "CLC.Missle-Command-final-app708";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -309,13 +309,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G5558S8WTY;
+				DEVELOPMENT_TEAM = SKHK43WKLD;
 				INFOPLIST_FILE = "Missle Command final app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "CLC.Missle-Command-final-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "CLC.Missle-Command-final-app708";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

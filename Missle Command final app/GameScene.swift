@@ -50,29 +50,18 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         city2.size.height = 75
         addChild(city2)
     }
-    override func didMove(to view: SKView){
+  
     
     override func didMove(to view: SKView) {
         
-       
+     
+
         print("hi")
        turretSpawn()
        citySpawn()
        city2Spawn()
     
-        run(SKAction.repeatForever(
-            SKAction.sequence([
-                SKAction.run(createEnemy),
-                SKAction.wait(forDuration: 1.0)
-                
-                
-                
-                ])
-        ))
-        
-        
-        
-        
+        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(createEnemy),SKAction.wait(forDuration: 1.0) ])))
         
         physicsWorld.gravity = CGVector.zero
         physicsWorld.contactDelegate = self
@@ -105,7 +94,7 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         
         // Add the monster to the scene
         addChild(bomb)
-        bomb.physicsBody = SKPhysicsBody(rectangleOf: bomb.size)
+       // bomb.physicsBody = SKPhysicsBody(rectangleOf: bomb.size)
         bomb.physicsBody?.isDynamic = true
         bomb.physicsBody?.categoryBitMask = 2
         bomb.physicsBody?.contactTestBitMask = PhysicsCategory.projectile
@@ -113,6 +102,8 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         
         bomb.size.width = 50
         bomb.size.height = 50
+         bomb.physicsBody = SKPhysicsBody(rectangleOf: bomb.size)
+        
         // Determine speed of the monster
         let actualDuration = random(min: CGFloat(3.0), max: CGFloat(4.0))
         
@@ -122,12 +113,7 @@ let turret = SKSpriteNode(imageNamed: "Turret")
     let actionMoveDone = SKAction.removeFromParent()
             bomb.run(SKAction.sequence([actionMove, actionMoveDone]))
         
-        
-    
-        
-    
-    
-    
+      
     
     }
    // func randomPoint() -> CGPoint{
@@ -172,10 +158,10 @@ override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
     projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
     
     
-    projectile.size.height = 25
-    projectile.size.width = 25
+    projectile.size.height = 50
+    projectile.size.width = 50
     
-    projectile.physicsBody = SKPhysicsBody(circleOfRadius: projectile.size.width/2)
+    projectile.physicsBody = SKPhysicsBody( circleOfRadius: projectile.size.width/2)
     projectile.physicsBody?.isDynamic = true
     projectile.physicsBody?.categoryBitMask = 2
     projectile.physicsBody?.contactTestBitMask = PhysicsCategory.bomb
@@ -194,9 +180,6 @@ override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
     }
 
     
-    
-    
-    
 }
 
 extension GameScene: SKPhysicsContactDelegate {
@@ -213,13 +196,16 @@ extension GameScene: SKPhysicsContactDelegate {
             firstBody = contact.bodyB
             secondBody = contact.bodyA
         }
-        
         // 2
-        //if ((firstBody.categoryBitMask & PhysicsCatagory.monster != 0) &&
-        //      (secondBody.categoryBitMask & PhysicsCatagory.projectile != 0)) {
+           //   if ((firstBody.categoryBitMask & PhysicsCategory.bomb != 0) &&
+           // (secondBody.categoryBitMask & PhysicsCategory.projectile != 0))
+        
         if let bomb = firstBody.node as? SKSpriteNode,
             let projectile = secondBody.node as? SKSpriteNode {
             projectileDidCollideWithMonster(projectile: projectile, bomb: bomb)
+            
         }
     }
 }
+
+
