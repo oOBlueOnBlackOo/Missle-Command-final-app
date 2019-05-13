@@ -13,8 +13,9 @@ struct PhysicsCategory {
   //  static let all: UInt32 = UInt32.max
     static let bomb: UInt32 = 2 //#1
     static let projectile: UInt32 = 4
-    static let turret: UInt32 = 1
-    
+    static let turret: UInt32 = 8
+    static let city: UInt32 = 16
+    static let cityTwo: UInt32 = 32
 }
 
 class GameScene: SKScene {
@@ -46,7 +47,13 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         
         city.name = "city"
         city.position = CGPoint(x: 85, y: 23)
+        city.physicsBody?.isDynamic = true
+        city.physicsBody?.categoryBitMask = PhysicsCategory.cityTwo
+        city.physicsBody?.contactTestBitMask = PhysicsCategory.bomb
+        city.physicsBody?.collisionBitMask = PhysicsCategory.none
+        city.physicsBody?.usesPreciseCollisionDetection = true
         city.physicsBody?.affectedByGravity = false
+        city.physicsBody = SKPhysicsBody( circleOfRadius: city.size.width/2)
         city.size.width = 100
         city.size.height = 75
         addChild(city)
@@ -55,9 +62,16 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         
         city2.name = "city2"
         city2.position = CGPoint(x: 305, y: 23)
-        city2.physicsBody?.affectedByGravity = false
+       
+        city2.physicsBody?.isDynamic = true
+        city2.physicsBody?.categoryBitMask = PhysicsCategory.cityTwo
+        city2.physicsBody?.contactTestBitMask = PhysicsCategory.bomb
+        city2.physicsBody?.collisionBitMask = PhysicsCategory.none
+        city2.physicsBody?.usesPreciseCollisionDetection = true
+        
         city2.size.width = 100
         city2.size.height = 75
+        city2.physicsBody = SKPhysicsBody( circleOfRadius: city2.size.width/2)
         addChild(city2)
     }
   
@@ -103,10 +117,12 @@ let turret = SKSpriteNode(imageNamed: "Turret")
         // Add the monster to the scene
         addChild(bomb)
        // bomb.physicsBody = SKPhysicsBody(rectangleOf: bomb.size)
+       
         bomb.physicsBody?.isDynamic = true
-        bomb.physicsBody?.categoryBitMask = 2
+        bomb.physicsBody?.categoryBitMask = PhysicsCategory.bomb
         bomb.physicsBody?.contactTestBitMask = PhysicsCategory.projectile
         bomb.physicsBody?.collisionBitMask = PhysicsCategory.none
+        
         
         bomb.size.width = 50
         bomb.size.height = 50
@@ -171,7 +187,7 @@ override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
     
     projectile.physicsBody = SKPhysicsBody( circleOfRadius: projectile.size.width/2)
     projectile.physicsBody?.isDynamic = true
-    projectile.physicsBody?.categoryBitMask = 2
+    projectile.physicsBody?.categoryBitMask = PhysicsCategory.projectile
     projectile.physicsBody?.contactTestBitMask = PhysicsCategory.bomb
     projectile.physicsBody?.collisionBitMask = PhysicsCategory.none
     projectile.physicsBody?.usesPreciseCollisionDetection = true
@@ -187,6 +203,12 @@ override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
     }
 
+    func bombDidCollideWithCityTwo(city: SKSpriteNode, bomb: SKSpriteNode) {
+        city.removeFromParent()
+        bomb.removeFromParent()
+    }
+    
+    
     
 }
 
@@ -213,6 +235,12 @@ extension GameScene: SKPhysicsContactDelegate {
             projectileDidCollideWithMonster(projectile: projectile, bomb: bomb)
             
         }
+        
+        if let bomb = firstBody.node as? SKSpriteNode,
+            let city = secondBody.node as? SKSpriteNode {
+            bombDidCollideWithCityTwo(city: city, bomb: bomb)
+        }
+        
     }
 }
 
