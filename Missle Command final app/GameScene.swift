@@ -23,16 +23,11 @@ let city = SKSpriteNode(imageNamed: "city")
 let city2 = SKSpriteNode(imageNamed: "city2")
 let missile = SKSpriteNode(imageNamed: "missile 1")
 let turret = SKSpriteNode(imageNamed: "Turret")
-   
-    var scoreLabel: SKLabelNode!
-    var score: Int = 0
+var scoreLabel: SKLabelNode!
     
-    func scoreLabelCreate(){
-        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
-        scoreLabel.text = "0"
-        scoreLabel.position = CGPoint(x: 185, y: 620)
-        addChild(scoreLabel)
-    }
+    
+    var score = 0
+    
     
     func turretSpawn(){
         
@@ -78,10 +73,17 @@ let turret = SKSpriteNode(imageNamed: "Turret")
     
     override func didMove(to view: SKView) {
        
+        
+        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        scoreLabel.text = "Score: 0"
+        scoreLabel.horizontalAlignmentMode = .right
+        scoreLabel.position = CGPoint(x: 185, y:600)
+        scoreLabel.text = "Score \(score)"
+        addChild(scoreLabel)
+        
        turretSpawn()
        citySpawn()
        city2Spawn()
-       scoreLabelCreate()
     
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run(createEnemy),SKAction.wait(forDuration: 1.0) ])))
         
@@ -199,7 +201,7 @@ override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("hit")
         projectile.removeFromParent()
         bomb.removeFromParent()
-        
+      score = score + 100
         
     }
 
