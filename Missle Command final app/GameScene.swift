@@ -42,31 +42,32 @@ var scoreLabel: SKLabelNode!
         
         city.name = "city"
         city.position = CGPoint(x: 85, y: 23)
+        city.size.width = 100
+        city.size.height = 75
+        city.physicsBody = SKPhysicsBody( circleOfRadius: city.size.width/2)
         city.physicsBody?.isDynamic = true
         city.physicsBody?.categoryBitMask = PhysicsCategory.cityTwo
         city.physicsBody?.contactTestBitMask = PhysicsCategory.bomb
         city.physicsBody?.collisionBitMask = PhysicsCategory.none
         city.physicsBody?.usesPreciseCollisionDetection = true
         city.physicsBody?.affectedByGravity = false
-        city.physicsBody = SKPhysicsBody( circleOfRadius: city.size.width/2)
-        city.size.width = 100
-        city.size.height = 75
+       
         addChild(city)
     }
     func city2Spawn()  {
         
         city2.name = "city2"
         city2.position = CGPoint(x: 305, y: 23)
-       
+        city2.size.width = 100
+        city2.size.height = 75
+        city2.physicsBody = SKPhysicsBody( circleOfRadius: city2.size.width/2)
         city2.physicsBody?.isDynamic = true
         city2.physicsBody?.categoryBitMask = PhysicsCategory.cityTwo
         city2.physicsBody?.contactTestBitMask = PhysicsCategory.bomb
         city2.physicsBody?.collisionBitMask = PhysicsCategory.none
         city2.physicsBody?.usesPreciseCollisionDetection = true
-        
-        city2.size.width = 100
-        city2.size.height = 75
-        city2.physicsBody = SKPhysicsBody( circleOfRadius: city2.size.width/2)
+        city2.physicsBody?.affectedByGravity = false
+      
         addChild(city2)
     }
   
@@ -78,7 +79,7 @@ var scoreLabel: SKLabelNode!
         scoreLabel.text = "Score: 0"
         scoreLabel.horizontalAlignmentMode = .right
         scoreLabel.position = CGPoint(x: 185, y:600)
-        scoreLabel.text = "Score \(score)"
+        
         addChild(scoreLabel)
         
        turretSpawn()
@@ -120,15 +121,15 @@ var scoreLabel: SKLabelNode!
         addChild(bomb)
        // bomb.physicsBody = SKPhysicsBody(rectangleOf: bomb.size)
        
+       
+        bomb.size.width = 50
+        bomb.size.height = 50
+        bomb.physicsBody = SKPhysicsBody(rectangleOf: bomb.size)
         bomb.physicsBody?.isDynamic = true
         bomb.physicsBody?.categoryBitMask = PhysicsCategory.bomb
         bomb.physicsBody?.contactTestBitMask = PhysicsCategory.projectile
         bomb.physicsBody?.collisionBitMask = PhysicsCategory.none
-        
-        
-        bomb.size.width = 50
-        bomb.size.height = 50
-         bomb.physicsBody = SKPhysicsBody(rectangleOf: bomb.size)
+        bomb.physicsBody?.usesPreciseCollisionDetection = true
         
         // Determine speed of the monster
         let actualDuration = random(min: CGFloat(3.0), max: CGFloat(4.0))
@@ -201,15 +202,24 @@ override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("hit")
         projectile.removeFromParent()
         bomb.removeFromParent()
-      score = score + 100
+        //score = score + 100
+        //scoreLabel.text = "Score \(score)"
         
     }
 
-    func bombDidCollideWithCityTwo(city: SKSpriteNode, bomb: SKSpriteNode) {
+    func bombDidCollideWithCity(city: SKSpriteNode, bomb: SKSpriteNode) {
+        print("boom")
         city.removeFromParent()
         bomb.removeFromParent()
+       
     }
     
+    func bombDidCollideWithCity2(city2: SKSpriteNode, bomb: SKSpriteNode) {
+        print("bang")
+        city2.removeFromParent()
+        bomb.removeFromParent()
+      
+    }
     
     
 }
@@ -233,14 +243,23 @@ extension GameScene: SKPhysicsContactDelegate {
            // (secondBody.categoryBitMask & PhysicsCategory.projectile != 0))
         
         if let bomb = firstBody.node as? SKSpriteNode,
-            let projectile = secondBody.node as? SKSpriteNode {
+         let projectile = secondBody.node as? SKSpriteNode {
             projectileDidCollideWithMonster(projectile: projectile, bomb: bomb)
+            score = score + 100
+            scoreLabel.text = "Score \(score)"
             
         }
         
-        if let bomb = firstBody.node as? SKSpriteNode,
-            let city = secondBody.node as? SKSpriteNode {
-            bombDidCollideWithCityTwo(city: city, bomb: bomb)
+       if let bomb = firstBody.node as? SKSpriteNode,
+        let city = secondBody.node as? SKSpriteNode{
+        bombDidCollideWithCity(city: city, bomb: bomb)
+        
+        }
+        
+       if let bomb = firstBody.node as? SKSpriteNode,
+        let city2 = secondBody.node as? SKSpriteNode{
+        bombDidCollideWithCity2(city2: city2, bomb: bomb)
+     
         }
         
     }
