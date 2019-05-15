@@ -77,8 +77,8 @@ var scoreLabel: SKLabelNode!
         
         scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
         scoreLabel.text = "Score: 0"
-        scoreLabel.horizontalAlignmentMode = .right
-        scoreLabel.position = CGPoint(x: 185, y:600)
+        scoreLabel.horizontalAlignmentMode = .center
+        scoreLabel.position = CGPoint(x: 185, y:625)
         
         addChild(scoreLabel)
         
