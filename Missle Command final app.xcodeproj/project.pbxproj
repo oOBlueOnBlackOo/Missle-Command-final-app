@@ -14,6 +14,7 @@
 		E946289222679B9C0005ED6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E946289022679B9C0005ED6C /* Main.storyboard */; };
 		E946289722679B9E0005ED6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E946289522679B9E0005ED6C /* LaunchScreen.storyboard */; };
 		E9ADFDF722834B530092EDCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9ADFDF622834B530092EDCA /* Assets.xcassets */; };
+		E9E83963228C8B47001EE2F8 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E83962228C8B47001EE2F8 /* GameOverScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E946289622679B9E0005ED6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E946289822679B9E0005ED6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9ADFDF622834B530092EDCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E9E83962228C8B47001EE2F8 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				E946288622679B9C0005ED6C /* AppDelegate.swift */,
 				E946288C22679B9C0005ED6C /* GameScene.swift */,
+				E9E83962228C8B47001EE2F8 /* GameOverScene.swift */,
 				E946288E22679B9C0005ED6C /* GameViewController.swift */,
 				E946289022679B9C0005ED6C /* Main.storyboard */,
 				E946289522679B9E0005ED6C /* LaunchScreen.storyboard */,
@@ -143,6 +146,7 @@
 			files = (
 				2437D7362280AC27002FAC7C /* VectorMath.swift in Sources */,
 				E946288D22679B9C0005ED6C /* GameScene.swift in Sources */,
+				E9E83963228C8B47001EE2F8 /* GameOverScene.swift in Sources */,
 				E946288F22679B9C0005ED6C /* GameViewController.swift in Sources */,
 				E946288722679B9C0005ED6C /* AppDelegate.swift in Sources */,
 			);
@@ -294,12 +298,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5558S8WTY;
 				INFOPLIST_FILE = "Missle Command final app/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "CLC.Missle-Command-final-app345";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "CLC.Missle-Command-final-app708";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -315,7 +320,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G5558S8WTY;
 				INFOPLIST_FILE = "Missle Command final app/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

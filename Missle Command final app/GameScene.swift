@@ -27,7 +27,7 @@ var scoreLabel: SKLabelNode!
     
     
     var score = 0
-    
+    var bombsDestroyed = 0
     
     func turretSpawn(){
         
@@ -135,10 +135,20 @@ var scoreLabel: SKLabelNode!
         let actualDuration = random(min: CGFloat(3.0), max: CGFloat(4.0))
         
         // Create the actions
+        
+        
     let actionMove = SKAction.move(to: CGPoint(x: actualX, y: -bomb.size.width/2),
             duration: TimeInterval(actualDuration))
     let actionMoveDone = SKAction.removeFromParent()
-            bomb.run(SKAction.sequence([actionMove, actionMoveDone]))
+        
+        
+        let loseAction = SKAction.run() { [weak self] in
+            guard let `self` = self else { return }
+            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+            let gameOverScene = GameOverScene(size: self.size, won: false)
+            self.view?.presentScene(gameOverScene, transition: reveal)
+        }
+        bomb.run(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
         
       
     
@@ -202,8 +212,13 @@ override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("hit")
         projectile.removeFromParent()
         bomb.removeFromParent()
-        //score = score + 100
-        //scoreLabel.text = "Score \(score)"
+        
+        bombsDestroyed += 1
+        if bombsDestroyed > 30 {
+            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+            let gameOverScene = GameOverScene(size: self.size, won: true)
+            view?.presentScene(gameOverScene, transition: reveal)
+        }
         
     }
 
