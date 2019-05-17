@@ -214,7 +214,7 @@ override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         bomb.removeFromParent()
         
         bombsDestroyed += 1
-        if bombsDestroyed > 30 {
+        if bombsDestroyed > 50 {
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
             let gameOverScene = GameOverScene(size: self.size, won: true)
             view?.presentScene(gameOverScene, transition: reveal)
