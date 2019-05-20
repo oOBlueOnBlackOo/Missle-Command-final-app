@@ -86,7 +86,7 @@ var scoreLabel: SKLabelNode!
        citySpawn()
        city2Spawn()
     
-        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(createEnemy),SKAction.wait(forDuration: 1.0) ])))
+        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(createEnemy),SKAction.wait(forDuration: 0.1) ])))
         
         physicsWorld.gravity = CGVector.zero
         physicsWorld.contactDelegate = self
@@ -110,7 +110,7 @@ var scoreLabel: SKLabelNode!
         let bomb = SKSpriteNode(imageNamed: "missile 2")
         bomb.name = "missile 2"
         
-        // Determine where to spawn the monster along the Y axis
+        // Determine where to spawn the monster along the X axis
         let actualX = random(min: bomb.size.width/5, max: size.width - bomb.size.width/5)
         
         // Position the monster slightly off-screen along the right edge,
@@ -147,6 +147,10 @@ var scoreLabel: SKLabelNode!
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
             let gameOverScene = GameOverScene(size: self.size, won: false)
             self.view?.presentScene(gameOverScene, transition: reveal)
+            
+            
+            
+            
         }
         bomb.run(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
         
@@ -226,7 +230,8 @@ override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("boom")
         city.removeFromParent()
         bomb.removeFromParent()
-       
+
+        
     }
     
     func bombDidCollideWithCity2(city2: SKSpriteNode, bomb: SKSpriteNode) {
@@ -259,6 +264,7 @@ extension GameScene: SKPhysicsContactDelegate {
         
         if let bomb = firstBody.node as? SKSpriteNode,
          let projectile = secondBody.node as? SKSpriteNode {
+           
             projectileDidCollideWithMonster(projectile: projectile, bomb: bomb)
             score = score + 100
             scoreLabel.text = "Score \(score)"
@@ -269,12 +275,15 @@ extension GameScene: SKPhysicsContactDelegate {
         let city = secondBody.node as? SKSpriteNode{
         bombDidCollideWithCity(city: city, bomb: bomb)
         
+     
         }
         
        if let bomb = firstBody.node as? SKSpriteNode,
         let city2 = secondBody.node as? SKSpriteNode{
         bombDidCollideWithCity2(city2: city2, bomb: bomb)
      
+        
+        
         }
         
     }
