@@ -86,7 +86,7 @@ var scoreLabel: SKLabelNode!
        citySpawn()
        city2Spawn()
     
-        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(createEnemy),SKAction.wait(forDuration: 0.1) ])))
+        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(createEnemy),SKAction.wait(forDuration: 0.7) ])))
         
         physicsWorld.gravity = CGVector.zero
         physicsWorld.contactDelegate = self
