@@ -86,7 +86,7 @@ var scoreLabel: SKLabelNode!
        citySpawn()
        city2Spawn()
     
-        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(createEnemy),SKAction.wait(forDuration: 0.1) ])))
+        run(SKAction.repeatForever(SKAction.sequence([SKAction.run(createEnemy),SKAction.wait(forDuration: 0.6) ])))
         
         physicsWorld.gravity = CGVector.zero
         physicsWorld.contactDelegate = self
@@ -262,12 +262,12 @@ extension GameScene: SKPhysicsContactDelegate {
            //   if ((firstBody.categoryBitMask & PhysicsCategory.bomb != 0) &&
            // (secondBody.categoryBitMask & PhysicsCategory.projectile != 0))
         
-        if let bomb = firstBody.node as? SKSpriteNode,
-         let projectile = secondBody.node as? SKSpriteNode {
-           
-            projectileDidCollideWithMonster(projectile: projectile, bomb: bomb)
+        if let bomb = firstBody.node as? SKSpriteNode,let projectile = secondBody.node as? SKSpriteNode {
             score = score + 100
             scoreLabel.text = "Score \(score)"
+            
+            projectileDidCollideWithMonster(projectile: projectile, bomb: bomb)
+         
             
         }
         
